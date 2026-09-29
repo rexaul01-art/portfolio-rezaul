@@ -1,0 +1,407 @@
+/* ═══════════════════════════════════════════════════
+   JOURNEY SECTIONS (Intro + Chapters)
+═══════════════════════════════════════════════════ */
+
+/* ══ JOURNEY INTRO ══ */
+
+.journey-intro {
+  position: relative;
+  background: var(--color-offwhite);
+  padding: var(--section-pad-y) var(--section-pad-x);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  overflow: clip;
+}
+
+/* ─── Yellow blob ─── */
+.journey-intro__blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  width: min(700px, 80vw);
+  height: min(560px, 70vw);
+  background: var(--color-gold);
+  border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Content ─── */
+.journey-intro__content {
+  position: relative;
+  z-index: 5;
+  max-width: 900px;
+}
+
+.journey-intro__heading-box {
+  border: 2.5px dashed var(--color-black);
+  padding: var(--space-4) var(--space-6);
+  display: inline-block;
+  margin-bottom: var(--space-6);
+  background: var(--color-white);
+}
+
+.journey-intro__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4.5vw, 3.2rem);
+  color: var(--color-black);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.journey-intro__sub {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--color-black);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ─── Scattered year tags ─── */
+.journey-intro__years {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.year-tag {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+  color: var(--color-black);
+  background: var(--color-white);
+  border: 2.5px dashed var(--color-black);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--border-radius-sm);
+}
+
+.year-tag--2022  { bottom: 28%; left: 8%; transform: rotate(-5deg); }
+.year-tag--2023a { bottom: 22%; left: 42%; transform: rotate(3deg); }
+.year-tag--2023b { bottom: 12%; left: 25%; transform: rotate(-7deg); }
+.year-tag--2024  { top: 28%; right: 8%; transform: rotate(4deg); }
+
+/* ─── Decorative shapes ─── */
+.journey-intro__shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.shape {
+  position: absolute;
+}
+
+.shape--circle-outline {
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--color-black);
+  border-radius: 50%;
+  bottom: 15%;
+  left: 5%;
+  opacity: 0.5;
+}
+
+.shape--triangle-outline {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid rgba(0,0,0,0.15);
+  top: 20%;
+  right: 20%;
+}
+
+.shape--arrow-sketch {
+  font-size: 2rem;
+  color: rgba(0,0,0,0.3);
+  top: 55%;
+  right: 24%;
+  transform: rotate(-15deg);
+}
+
+/* ══ JOURNEY CHAPTERS ══ */
+
+.journey-chapters {
+  background: var(--color-white);
+}
+
+/* ─── Individual chapter ─── */
+.journey-chapter {
+  padding: var(--section-pad-y) var(--section-pad-x);
+  max-width: var(--container-base);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+  border-bottom: 1.5px solid var(--color-light-grey);
+}
+
+/* ─── Year + Title wrap ─── */
+.journey-chapter__year-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+  grid-column: 1 / -1;
+}
+
+.journey-chapter__year {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 7rem);
+  color: var(--color-black);
+  line-height: 1;
+  display: block;
+}
+
+/* Gradient year (2025) */
+.journey-chapter__year--gradient {
+  background: linear-gradient(135deg, var(--color-cyan) 0%, #B78FEF 60%, var(--color-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.journey-chapter__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.journey-chapter__title {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+/* ─── Body ─── */
+.journey-chapter__body {
+  grid-column: 1;
+}
+
+.journey-chapter__body p {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.75;
+  color: #2A2A2A;
+  margin-bottom: var(--space-5);
+}
+
+.journey-chapter__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ─── Visual side ─── */
+.journey-chapter__visual {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.journey-chapter__tshirt {
+  width: min(140px, 25vw);
+  opacity: 0.9;
+}
+
+.journey-chapter__tshirt svg {
+  width: 100%;
+  height: auto;
+}
+
+.journey-chapter__sticky-note {
+  background: #FFF59D;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid #E0DC8A;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  transform: rotate(3deg);
+  box-shadow: 2px 3px 6px rgba(0,0,0,0.12);
+  line-height: 1.5;
+}
+
+.journey-chapter__tags-float {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+/* ─── Divider ─── */
+.journey-chapter__divider {
+  grid-column: 1 / -1;
+  height: 1.5px;
+  background: var(--color-light-grey);
+  display: none;
+}
+
+/* ══ 2025 TECH CHAPTER (special layout) ══ */
+
+.journey-chapter--tech {
+  display: block;
+  padding: var(--section-pad-y) var(--section-pad-x);
+  border-bottom: 1.5px solid var(--color-light-grey);
+}
+
+.journey-chapter__inner-card {
+  max-width: var(--container-base);
+  margin: 0 auto;
+  background: var(--color-white);
+  border: 2px solid var(--color-mid-grey);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.journey-chapter--tech .journey-chapter__year-wrap {
+  padding: var(--space-8) var(--space-8) var(--space-4);
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+/* ─── Tech stickers ─── */
+.journey-chapter__tech-stickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-8) var(--space-10);
+  align-items: center;
+}
+
+.tech-sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(0.7rem, 1.8vw, 1rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-5);
+  border: 2.5px solid var(--color-black);
+  position: relative;
+  user-select: none;
+  box-shadow: 0 0 18px 4px rgba(0,200,232,0.35);
+}
+
+.tech-sticker--pink {
+  background: var(--color-pink);
+  color: var(--color-black);
+  box-shadow: 0 0 18px 4px rgba(255,45,155,0.4);
+}
+
+.tech-sticker--cyan {
+  background: var(--color-cyan);
+  color: var(--color-black);
+  box-shadow: 0 0 18px 4px rgba(0,200,232,0.4);
+}
+
+.tech-sticker--yellow {
+  background: var(--color-yellow);
+  color: var(--color-black);
+  box-shadow: 0 0 18px 4px rgba(255,230,0,0.5);
+}
+
+/* Shapes */
+.tech-sticker--ticket {
+  border-radius: 4px;
+  transform: rotate(-3deg);
+}
+
+.tech-sticker--circle {
+  border-radius: 50%;
+  width: clamp(90px, 14vw, 130px);
+  height: clamp(90px, 14vw, 130px);
+  flex-direction: column;
+  font-size: clamp(0.6rem, 1.5vw, 0.85rem);
+}
+
+.tech-sticker--rect {
+  border-radius: 6px;
+  transform: rotate(2deg);
+}
+
+.tech-sticker--bubble {
+  border-radius: 50%;
+  width: clamp(70px, 12vw, 110px);
+  height: clamp(70px, 12vw, 110px);
+  flex-direction: column;
+  font-size: clamp(0.6rem, 1.3vw, 0.85rem);
+  transform: rotate(-4deg);
+}
+
+.tech-sticker--triangle {
+  background: var(--color-cyan);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  border: none;
+  width: clamp(60px, 10vw, 90px);
+  height: clamp(60px, 10vw, 90px);
+  justify-content: center;
+  padding-top: 30%;
+  box-shadow: none;
+  filter: drop-shadow(0 0 8px rgba(0,200,232,0.5));
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .journey-chapter {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .journey-chapter__year-wrap { grid-column: 1; }
+  .journey-chapter__body { grid-column: 1; }
+  .journey-chapter__visual { grid-column: 1; flex-direction: row; }
+}
+
+@media (max-width: 768px) {
+  .journey-intro {
+    padding: var(--space-16) var(--space-5);
+    min-height: auto;
+    align-items: flex-start;
+  }
+  .journey-intro__blob {
+    width: 90vw;
+    height: 70vw;
+  }
+  .year-tag { font-size: clamp(0.9rem, 4vw, 1.4rem); }
+  .year-tag--2022  { bottom: 10%; left: 4%; }
+  .year-tag--2023a { bottom: 5%; left: 38%; }
+  .year-tag--2023b { display: none; }
+  .year-tag--2024  { top: 12%; right: 3%; }
+
+  .journey-chapter {
+    padding: var(--space-12) var(--space-5);
+  }
+  .journey-chapter--tech {
+    padding: var(--space-12) var(--space-5);
+  }
+  .journey-chapter--tech .journey-chapter__year-wrap {
+    padding: var(--space-5) var(--space-5) var(--space-3);
+  }
+  .journey-chapter__tech-stickers {
+    padding: var(--space-4) var(--space-5) var(--space-8);
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .journey-chapter__year {
+    font-size: clamp(2.5rem, 15vw, 4rem);
+  }
+  .shape--circle-outline,
+  .shape--triangle-outline { display: none; }
+}

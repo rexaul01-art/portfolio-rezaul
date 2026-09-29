@@ -1,0 +1,105 @@
+/* ═══════════════════════════════════════════════════
+   TOOLBOX SECTION
+═══════════════════════════════════════════════════ */
+
+.toolbox {
+  background: var(--color-white);
+  padding: var(--section-pad-y) var(--section-pad-x);
+  overflow: clip;
+  border-top: 2px solid var(--color-light-grey);
+  border-bottom: 2px solid var(--color-light-grey);
+}
+
+.toolbox__heading-wrap {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.toolbox__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  color: var(--color-black);
+  letter-spacing: -0.01em;
+}
+
+/* ─── Tool tag wall ─── */
+.toolbox__wall {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  align-items: center;
+  max-width: var(--container-wide);
+  margin: 0 auto;
+}
+
+/* ─── Tool tag (luggage tag shape) ─── */
+.tool-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-6);
+  border: 2.5px solid var(--color-black);
+  border-radius: 4px;
+  position: relative;
+  cursor: default;
+  transition: transform var(--duration-fast) var(--ease-out-back),
+              box-shadow var(--duration-fast) ease;
+  will-change: transform;
+}
+
+/* Luggage tag hole */
+.tool-tag::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-black);
+  background: var(--color-white);
+}
+
+.tool-tag:hover {
+  transform: rotate(0deg) scale(1.06) !important;
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+}
+
+/* Colors */
+.tool-tag--cyan   { background: var(--color-cyan);   color: var(--color-black); }
+.tool-tag--pink   { background: var(--color-pink);   color: var(--color-black); }
+.tool-tag--yellow { background: var(--color-yellow); color: var(--color-black); }
+.tool-tag--black  { background: var(--color-black);  color: var(--color-white); }
+.tool-tag--black::before { background: var(--color-black); border-color: var(--color-white); }
+
+/* Rotations */
+.tool-tag--r-3 { transform: rotate(-3deg); }
+.tool-tag--r-2 { transform: rotate(-2deg); }
+.tool-tag--r-1 { transform: rotate(-1deg); }
+.tool-tag--r1  { transform: rotate(1deg); }
+.tool-tag--r2  { transform: rotate(2deg); }
+.tool-tag--r3  { transform: rotate(3deg); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 480px) {
+  .toolbox {
+    padding: var(--space-12) var(--space-5);
+  }
+  .tool-tag {
+    font-size: clamp(0.6rem, 3.5vw, 0.8rem);
+    padding: var(--space-2) var(--space-4);
+  }
+  .tool-tag::before {
+    width: 10px;
+    height: 10px;
+    left: -6px;
+  }
+}

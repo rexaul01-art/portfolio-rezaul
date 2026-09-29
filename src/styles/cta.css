@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════
+   CTA SECTION STYLES — Cyan bg, Dark browser, Redesigned CTA Button
+═══════════════════════════════════════════════════ */
+
+.cta {
+  background: var(--color-cyan);
+  padding: var(--section-pad-y) var(--section-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  overflow: clip;
+  max-width: 100vw;
+}
+
+.cta__browser {
+  width: min(900px, 94vw);
+  background: var(--color-navy);
+  border: 3px solid var(--color-black);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 10px 10px 0px var(--color-black);
+  will-change: transform;
+}
+
+.cta__body {
+  padding: clamp(1.5rem, 5vw, 4rem);
+  text-align: left;
+}
+
+.cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 9vw, 6.5rem);
+  color: var(--color-white);
+  line-height: 1;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.cta__sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-8);
+}
+
+.cta__buttons {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.cta__btn {
+  font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+  padding: var(--space-4) var(--space-8);
+  letter-spacing: 0.08em;
+}
+
+/* ─── MANDATORY REDESIGNED "LET'S TALK" BUTTON ─── */
+.btn--cta-cyan {
+  background: var(--color-cyan) !important;
+  color: var(--color-white) !important; /* MANDATORY WHITE TEXT */
+  border: 3px solid var(--color-black) !important;
+  box-shadow: 2px 2px 0px var(--color-black) !important;
+  font-weight: 900 !important;
+  border-radius: var(--border-radius-pill) !important;
+}
+
+.btn--cta-cyan:hover {
+  background: var(--color-cyan-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-black) !important;
+}
+
+.btn--cta-cyan:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px var(--color-black) !important;
+}
+
+@media (max-width: 768px) {
+  .cta { padding: var(--space-12) var(--space-4); }
+  .cta__body { padding: var(--space-6) var(--space-4) var(--space-8); }
+  .cta__buttons { flex-direction: column; gap: var(--space-3); }
+  .cta__btn { width: 100%; justify-content: center; }
+}

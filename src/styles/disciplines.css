@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════
+   DISCIPLINES / WHAT I DO
+═══════════════════════════════════════════════════ */
+
+.disciplines {
+  position: relative;
+  background: var(--color-white);
+  padding: var(--section-pad-y) var(--section-pad-x);
+  overflow: clip;
+}
+
+/* ─── Pixel stars ─── */
+.disciplines__pixel-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.pixel-star {
+  position: absolute;
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  line-height: 1;
+}
+
+.pixel-star--cyan { color: var(--color-cyan); }
+.pixel-star--pink { color: var(--color-pink); }
+
+.pixel-star--1 { top: 12%; left: 5%; }
+.pixel-star--2 { top: 18%; right: 6%; }
+.pixel-star--3 { bottom: 20%; left: 6%; }
+.pixel-star--4 { bottom: 15%; right: 5%; }
+
+.pixel-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.pixel-dot--cyan { background: var(--color-cyan); }
+.pixel-dot--pink { background: var(--color-pink); }
+
+.pixel-dot--1 { top: 8%; left: 14%; }
+.pixel-dot--2 { top: 22%; right: 14%; }
+.pixel-dot--3 { bottom: 28%; left: 12%; }
+.pixel-dot--4 { bottom: 12%; right: 14%; }
+
+/* ─── Heading ─── */
+.disciplines__heading-wrap {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.disciplines__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.disciplines__heading-cyan {
+  color: var(--color-cyan);
+  -webkit-text-stroke: 2px var(--color-black);
+  text-stroke: 2px var(--color-black);
+}
+
+.disciplines__heading-pink {
+  color: var(--color-pink);
+  -webkit-text-stroke: 2px var(--color-black);
+  text-stroke: 2px var(--color-black);
+}
+
+/* ─── Grid ─── */
+.disciplines__grid {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+  max-width: var(--container-base);
+  margin: 0 auto;
+}
+
+/* ─── Discipline Card ─── */
+.discipline-card {
+  padding: var(--space-8);
+  border: 2.5px solid var(--color-black);
+  border-radius: var(--border-radius);
+  background: var(--color-white);
+  transition: transform var(--duration-base) var(--ease-out-expo),
+              box-shadow var(--duration-base) var(--ease-out-expo);
+}
+
+.discipline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.discipline-card--cyan .discipline-card__header {
+  background: var(--color-cyan);
+}
+
+.discipline-card--pink .discipline-card__header {
+  background: var(--color-pink);
+}
+
+.discipline-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  margin: calc(-1 * var(--space-8)) calc(-1 * var(--space-8)) var(--space-6) calc(-1 * var(--space-8));
+  border-radius: calc(var(--border-radius) - 1px) calc(var(--border-radius) - 1px) 0 0;
+  border-bottom: 2.5px solid var(--color-black);
+}
+
+.discipline-card__icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.discipline-card__title {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1.8vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  line-height: 1.2;
+}
+
+.discipline-card__body {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.8vw, 1rem);
+  line-height: 1.7;
+  color: #333;
+}
+
+/* ─── Pixel arrows ─── */
+.disciplines__pixel-arrows {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.pixel-arrow {
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-cyan);
+}
+
+.pixel-arrow--up { top: 40%; left: 50%; transform: translateX(-50%); }
+.pixel-arrow--right { bottom: 30%; right: 5%; color: var(--color-pink); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .disciplines__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .disciplines__heading {
+    font-size: clamp(2rem, 12vw, 4rem);
+  }
+  .disciplines__heading-cyan,
+  .disciplines__heading-pink {
+    -webkit-text-stroke: 1.5px var(--color-black);
+  }
+  .pixel-arrow { display: none; }
+}
+
+@media (max-width: 480px) {
+  .disciplines {
+    padding: var(--space-12) var(--space-5);
+  }
+  .discipline-card {
+    padding: var(--space-6);
+  }
+  .discipline-card__header {
+    margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-6)) var(--space-5) calc(-1 * var(--space-6));
+  }
+}

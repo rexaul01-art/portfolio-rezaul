@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REZAUL KARIM — Developer × Designer</title>
+  <meta name="description" content="Rezaul Karim is a developer and designer building digital experiences with code, design and AI." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="REZAUL KARIM — Developer × Designer" />
+  <meta property="og:description" content="Rezaul Karim is a developer and designer building digital experiences with code, design and AI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/rezaullogo.png" />
+  <meta name="theme-color" content="#00C8E8" />
+  <link rel="icon" type="image/png" href="/rezaullogo.png" />
+
+  <!-- Instant Preload for Profile Logo Picture -->
+  <link rel="preload" href="/rezaullogo.png" as="image" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/tokens.css" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+  <link rel="stylesheet" href="/src/styles/navbar.css" />
+  <link rel="stylesheet" href="/src/styles/mobile-menu.css" />
+  <link rel="stylesheet" href="/src/styles/hero.css" />
+  <link rel="stylesheet" href="/src/styles/about.css" />
+  <link rel="stylesheet" href="/src/styles/journey.css" />
+  <link rel="stylesheet" href="/src/styles/disciplines.css" />
+  <link rel="stylesheet" href="/src/styles/toolbox.css" />
+  <link rel="stylesheet" href="/src/styles/projects.css" />
+  <link rel="stylesheet" href="/src/styles/cta.css" />
+  <link rel="stylesheet" href="/src/styles/contact.css" />
+  <link rel="stylesheet" href="/src/styles/footer.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo" id="navLogo" aria-label="Rezaul Karim - Home">
+        REZAUL KARIM
+      </a>
+      <ul class="navbar__links" role="list">
+        <li><a href="#work" class="navbar__link" data-section="work">WORK</a></li>
+        <li><a href="#journey" class="navbar__link" data-section="journey">JOURNEY</a></li>
+        <li><a href="#about" class="navbar__link" data-section="about">ABOUT</a></li>
+        <li><a href="#contact" class="navbar__link" data-section="contact">CONTACT</a></li>
+      </ul>
+      <a href="#contact" class="navbar__cta btn btn--cta-cyan">LET'S TALK <span class="btn-arrow">→</span></a>
+      <button class="navbar__burger" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="burger-label">MENU</span>
+        <span class="burger-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       MOBILE MENU OVERLAY
+  ═══════════════════════════════════════════ -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation" hidden>
+    <div class="mobile-menu__inner">
+      <button class="mobile-menu__close" id="menuClose" aria-label="Close navigation menu">✕ CLOSE</button>
+      <nav aria-label="Mobile navigation links">
+        <ul class="mobile-menu__links" role="list">
+          <li><a href="#about" class="mobile-menu__link" data-close-menu>ABOUT</a></li>
+          <li><a href="#journey" class="mobile-menu__link" data-close-menu>JOURNEY</a></li>
+          <li><a href="#work" class="mobile-menu__link" data-close-menu>WORK</a></li>
+          <li><a href="#toolbox" class="mobile-menu__link" data-close-menu>TOOLBOX</a></li>
+          <li><a href="#contact" class="mobile-menu__link" data-close-menu>CONTACT</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu__footer">
+        <span>REZAUL KARIM</span>
+        <span>DEVELOPER × DESIGNER</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUBLIC APP CONTAINER -->
+  <div id="appPublic">
+
+    <!-- VIEW 1: HOME PAGE -->
+    <div id="viewHome">
+      <!-- HERO -->
+      <section class="hero" id="hero" aria-label="Hero - Rezaul Karim">
+        <!-- Rendered dynamically by src/components/hero.js -->
+      </section>
+
+      <!-- ABOUT ME SECTION -->
+      <section class="about" id="about" aria-label="About Rezaul Karim">
+        <!-- Rendered dynamically by src/components/about.js -->
+      </section>
+
+      <!-- JOURNEY INTRO -->
+      <section class="journey-intro" id="journey" aria-label="Journey introduction">
+        <div class="journey-intro__blob" aria-hidden="true"></div>
+
+        <div class="journey-intro__content">
+          <div class="journey-intro__heading-box">
+            <h2 class="journey-intro__heading">HOW DID I GET HERE?</h2>
+          </div>
+          <p class="journey-intro__sub">IT STARTED WITH TRYING THINGS.</p>
+        </div>
+
+        <div class="journey-intro__years" aria-hidden="true">
+          <div class="year-tag year-tag--2022">2022</div>
+          <div class="year-tag year-tag--2023a">2023</div>
+          <div class="year-tag year-tag--2023b">2023</div>
+          <div class="year-tag year-tag--2024">2024</div>
+        </div>
+
+        <div class="journey-intro__shapes" aria-hidden="true">
+          <div class="shape shape--circle-outline"></div>
+          <div class="shape shape--triangle-outline"></div>
+          <div class="shape shape--arrow-sketch">→</div>
+        </div>
+      </section>
+
+      <!-- JOURNEY CHAPTERS -->
+      <section class="journey-chapters" aria-label="Career journey chapters">
+        <!-- Rendered dynamically by src/components/journey.js -->
+      </section>
+
+      <!-- WHAT I DO (DISCIPLINES) -->
+      <section class="disciplines" id="disciplines" aria-label="What I do - Disciplines">
+        <!-- Rendered dynamically by src/components/disciplines.js -->
+      </section>
+
+      <!-- TOOLBOX -->
+      <section class="toolbox" id="toolbox" aria-label="My tools and technology stack">
+        <!-- Rendered dynamically by src/components/toolbox.js -->
+      </section>
+
+      <!-- FEATURED WORK / PROJECTS -->
+      <section class="projects" id="work" aria-label="Featured projects">
+        <!-- Rendered dynamically by src/components/projects.js -->
+      </section>
+
+      <!-- FINAL CALL TO ACTION -->
+      <section class="cta" id="cta" aria-label="Call to action - Let's Talk">
+        <!-- Rendered dynamically by src/components/cta.js -->
+      </section>
+
+      <!-- CONTACT -->
+      <section class="contact" id="contact" aria-label="Contact Rezaul Karim">
+        <div class="contact__card">
+          <div class="contact__social-links">
+            <!-- Rendered dynamically by src/components/contact.js -->
+          </div>
+
+          <form class="contact__form" id="contactForm" novalidate aria-label="Contact form">
+            <div class="contact__field">
+              <label for="contactName" class="sr-only">Your name</label>
+              <input type="text" id="contactName" name="name" placeholder="Name" required autocomplete="name" />
+            </div>
+            <div class="contact__field">
+              <label for="contactEmail" class="sr-only">Your email address</label>
+              <input type="email" id="contactEmail" name="email" placeholder="Email" required autocomplete="email" />
+            </div>
+            <div class="contact__field">
+              <label for="contactProject" class="sr-only">Project type or subject</label>
+              <input type="text" id="contactProject" name="project" placeholder="Project / Subject" />
+            </div>
+            <div class="contact__field">
+              <label for="contactMessage" class="sr-only">Your message</label>
+              <textarea id="contactMessage" name="message" placeholder="Message" rows="5" required></textarea>
+            </div>
+            <div class="contact__form-status" id="formStatus" role="status" aria-live="polite" hidden></div>
+            <button type="submit" class="contact__submit btn btn--black-filled" id="contactSubmit">
+              <span class="contact__submit-text">SEND MESSAGE</span>
+              <span class="contact__submit-loading" hidden aria-hidden="true">SENDING…</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer" id="footer" role="contentinfo">
+        <div class="footer__name-wrap" aria-hidden="true">
+          <span class="footer__name">REZAUL KARIM</span>
+        </div>
+        <div class="footer__meta">
+          <!-- Rendered dynamically by src/components/footer.js -->
+        </div>
+        <button class="footer__back-top" id="backToTop" aria-label="Back to top">
+          <span class="footer__back-top-icon" aria-hidden="true">↑</span>
+          <span class="footer__back-top-label">Back to top</span>
+        </button>
+      </footer>
+    </div>
+
+    <!-- VIEW 2: ALL WORK PAGE (/work) -->
+    <div id="viewAllWork" style="display: none;"></div>
+
+    <!-- VIEW 3: PROJECT DETAIL PAGE (/work/:id) -->
+    <div id="viewProjectDetail" style="display: none;"></div>
+
+  </div>
+
+  <!-- App Bundle -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

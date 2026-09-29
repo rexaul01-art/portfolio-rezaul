@@ -1,0 +1,226 @@
+/* ═══════════════════════════════════════════════════
+   HERO SECTION — Responsive & Large Profile Photo Area
+═══════════════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  background: var(--color-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--navbar-height) + var(--space-6)) var(--section-pad-x) var(--space-8);
+  overflow: clip;
+  max-width: 100vw;
+}
+
+/* Decorative background arrows */
+.hero__bg-arrows {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.hero__arrow {
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: rgba(0,0,0,0.2);
+  font-weight: 700;
+}
+
+.hero__arrow--tl { top: 12%; left: 8%; }
+.hero__arrow--tr { top: 8%; right: 12%; font-size: 1.4rem; }
+.hero__arrow--br { bottom: 18%; right: 8%; font-size: 1.6rem; }
+.hero__arrow--bl { bottom: 20%; left: 8%; font-size: 1.6rem; }
+.hero__arrow--r  { top: 45%; right: 4%; font-size: 1.6rem; }
+
+/* Floating stickers */
+.hero__sticker-ai {
+  position: absolute;
+  top: 24%;
+  left: 6%;
+  z-index: 10;
+}
+
+.hero__sticker-uiux1 {
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  z-index: 10;
+}
+
+.hero__sticker-fullstack {
+  position: absolute;
+  top: 42%;
+  right: 5%;
+  z-index: 10;
+}
+
+.hero__sticker-uiux2 {
+  position: absolute;
+  bottom: 18%;
+  left: 6%;
+  z-index: 10;
+}
+
+/* Browser Window Frame */
+.hero__browser {
+  position: relative;
+  width: min(880px, 94vw);
+  background: var(--color-white);
+  border: 3.5px solid var(--color-black);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 10px 10px 0px var(--color-black);
+  overflow: hidden;
+  z-index: 5;
+  will-change: transform;
+}
+
+.hero__browser-body {
+  padding: var(--space-8) clamp(1.2rem, 5%, 3.5rem) var(--space-10);
+  position: relative;
+  min-height: 320px;
+}
+
+/* Name Heading */
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 10vw, 7.5rem);
+  line-height: 1.05;
+  color: var(--color-black);
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  word-break: break-word;
+}
+
+.hero__name-line1,
+.hero__name-line2 {
+  display: block;
+}
+
+/* Subtitle */
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 2.2vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--color-black);
+  margin-top: var(--space-4);
+  text-transform: uppercase;
+}
+
+/* ─── PROMINENT RK / PROFILE PHOTO AREA ─── */
+.hero__portrait-wrap {
+  position: absolute;
+  right: clamp(1rem, 4%, 3rem);
+  bottom: clamp(1rem, 4%, 2.2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  z-index: 15;
+}
+
+.hero__portrait-circle {
+  width: clamp(95px, 16vw, 160px);
+  height: clamp(95px, 16vw, 160px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-pink));
+  border: 3.5px solid var(--color-black);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0 var(--color-black);
+  transition: transform 0.2s ease;
+}
+
+.hero__portrait-circle:hover {
+  transform: scale(1.04);
+}
+
+.hero__portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero__portrait-placeholder {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+  color: var(--color-white);
+  text-shadow: 2px 2px 0 var(--color-black);
+}
+
+.hero__portrait-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 1.1vw, 0.75rem);
+  font-weight: 700;
+  color: var(--color-black);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Scroll Hint */
+.hero__scroll-hint {
+  position: absolute;
+  right: clamp(0.8rem, 2.5%, 1.8rem);
+  top: 40%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--color-text-grey);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+
+/* ─── MOBILE RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--navbar-height) + var(--space-4));
+    padding-bottom: var(--space-6);
+    min-height: auto;
+  }
+  .hero__browser {
+    width: 94vw;
+  }
+  .hero__browser-body {
+    padding: var(--space-6) var(--space-4) clamp(85px, 24vw, 120px);
+    min-height: 240px;
+  }
+  .hero__scroll-hint { display: none; }
+  .hero__portrait-circle {
+    width: clamp(80px, 20vw, 110px);
+    height: clamp(80px, 20vw, 110px);
+  }
+  .hero__sticker-ai       { top: 20%; left: 2%; }
+  .hero__sticker-uiux1    { top: 10%; right: 2%; }
+  .hero__sticker-fullstack{ top: 52%; right: 2%; }
+  .hero__sticker-uiux2    { display: none; }
+}
+
+@media (max-width: 430px) {
+  .hero__name {
+    font-size: clamp(2.1rem, 13vw, 3.8rem);
+  }
+  .hero__sticker-ai,
+  .hero__sticker-uiux1,
+  .hero__sticker-fullstack {
+    font-size: 0.55rem;
+    padding: 3px 6px;
+  }
+}
