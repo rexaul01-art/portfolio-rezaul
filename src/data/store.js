@@ -174,6 +174,7 @@ export function saveLocalData(newData) {
 }
 
 export async function loadPortfolioData() {
+  // 1. Instant Cache from LocalStorage
   try {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (saved) {
@@ -185,6 +186,7 @@ export async function loadPortfolioData() {
     }
   } catch (e) {}
 
+  // 2. Fetch live data from /api/content
   try {
     const res = await fetch('/api/content', { headers: { 'Cache-Control': 'no-cache' } });
     if (res.ok) {
@@ -196,9 +198,23 @@ export async function loadPortfolioData() {
         }
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(portfolioData));
         notifyListeners();
+        return portfolioData;
       }
     }
   } catch (err) {}
+
+  // 3. Fallback: Check static public/data.json
+  try {
+    const jsonRes = await fetch('/data.json', { headers: { 'Cache-Control': 'no-cache' } });
+    if (jsonRes.ok) {
+      const jsonData = await jsonRes.json();
+      if (jsonData && jsonData.profile) {
+        portfolioData = { ...DEFAULT_PORTFOLIO_DATA, ...jsonData };
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(portfolioData));
+        notifyListeners();
+      }
+    }
+  } catch (e) {}
 
   return portfolioData;
 }
