@@ -56,13 +56,19 @@
       "description": "Creating native Android applications that are robust, efficient, and user-friendly.",
       "icon": "smartphone",
       "order": 4
+    },
+    {
+      "id": "skill-1790781800089",
+      "name": "Marketing",
+      "description": "Full-service social media marketing handles your brand's online presence from raw video and photo creation to daily community building.\n",
+      "icon": "code"
     }
   ],
   "socials": {
-    "email": "contact@rezaulkarim.dev",
-    "whatsapp": "919000000000",
-    "instagram": "https://instagram.com/rezaulkarim.dev",
-    "github": "https://github.com/rezaulkarim"
+    "email": "contact.rezauldev@gmail.com",
+    "whatsapp": "918822367940",
+    "instagram": "https://instagram.com/rezaull._creates",
+    "github": "https://github.com/rexaul01-art"
   },
   "contact": {
     "heading": "LET'S TALK",
@@ -98,25 +104,68 @@
       "order": 1
     },
     {
-      "id": "proj-2",
-      "title": "AI Smart Assistant & Vision App",
-      "category": "MOBILE × AI DEVELOPMENT",
-      "description": "Native Android application integrating machine learning models for real-time visual recognition, document scanning, and automated response generation.",
-      "buildDetails": "Architected with Kotlin and Jetpack Compose on Android, backed by Python FastAPI services and custom AI APIs for real-time inference and processing.",
-      "year": "2025",
+      "id": "proj-1790781891373",
+      "title": "aavare.in",
+      "category": "WEB DESIGN × DEVELOPMENT",
+      "year": "2026",
+      "description": "aavare.in is an e-commerce platform and premium heritage food house from Odisha, India.",
       "technologies": [
-        "Kotlin",
-        "Android Studio",
-        "Python",
-        "AI APIs",
-        "FastAPI"
+        "React",
+        "Node.js"
       ],
-      "image": "",
-      "gallery": [],
-      "liveUrl": "",
-      "codeUrl": "https://github.com/rezaulkarim/ai-vision-android",
+      "liveUrl": "https://www.aavare.in/",
+      "codeUrl": "",
       "featured": true,
-      "order": 2
+      "image": "/uploads/Screenshot_2026-09-29_215229_p_1790781834149.png",
+      "gallery": []
+    },
+    {
+      "id": "proj-1790781945878",
+      "title": "Aloha Learning Centre",
+      "category": "WEB DESIGN × DEVELOPMENT",
+      "year": "2026",
+      "description": "An Aloha Learning Centre is an educational facility that helps children develop brain power, math skills, and confidence through specialized abacus and mental arithmetic programs.",
+      "technologies": [
+        "React",
+        "Node.js"
+      ],
+      "liveUrl": "",
+      "codeUrl": "",
+      "featured": true,
+      "image": "/uploads/Screenshot_2026-09-29_215305_p_1790781943786.png",
+      "gallery": []
+    },
+    {
+      "id": "proj-1790782031173",
+      "title": "Sikdar Interiors",
+      "category": "WEB DESIGN × DEVELOPMENT",
+      "year": "2026",
+      "description": "The Sikdar Interior And Designing is a highly-rated professional interior design and decoration firm based in Kayakuchi, Barpeta, Assam.",
+      "technologies": [
+        "React",
+        "Node.js"
+      ],
+      "liveUrl": "",
+      "codeUrl": "",
+      "featured": true,
+      "image": "/uploads/Screenshot_2026-09-29_215334_p_1790781974257.png",
+      "gallery": []
+    },
+    {
+      "id": "proj-1790782059013",
+      "title": "My Portfolio",
+      "category": "WEB DESIGN × DEVELOPMENT",
+      "year": "2026",
+      "description": "My portfolio",
+      "technologies": [
+        "React",
+        "Node.js"
+      ],
+      "liveUrl": "",
+      "codeUrl": "",
+      "featured": true,
+      "image": "/uploads/Screenshot_2026-09-29_215400_p_1790782046925.png",
+      "gallery": []
     }
   ],
   "journey": [

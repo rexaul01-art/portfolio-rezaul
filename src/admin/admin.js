@@ -27,6 +27,37 @@ async function checkAuthSession() {
   return false;
 }
 
+function showToast(message) {
+  let toast = document.getElementById('adminToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'adminToast';
+    toast.style.position = 'fixed';
+    toast.style.bottom = '24px';
+    toast.style.right = '24px';
+    toast.style.backgroundColor = '#10B981';
+    toast.style.color = '#FFFFFF';
+    toast.style.padding = '14px 24px';
+    toast.style.borderRadius = '8px';
+    toast.style.fontWeight = '700';
+    toast.style.fontSize = '0.9rem';
+    toast.style.boxShadow = '0 8px 24px rgba(0,0,0,0.4)';
+    toast.style.zIndex = '999999';
+    toast.style.transition = 'all 0.3s ease';
+    toast.style.border = '2px solid #0A0A0A';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateY(0)';
+  setTimeout(() => {
+    if (toast) {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(10px)';
+    }
+  }, 4000);
+}
+
 function render(container) {
   if (!container) return;
 
@@ -66,7 +97,10 @@ function render(container) {
         <header class="admin-topbar">
           <div class="admin-topbar__title">${getTabTitle(activeTab)}</div>
           <div class="admin-topbar__actions">
-            <span style="font-size: 0.75rem; color: #10B981; font-weight: 700;">Live Sync Enabled</span>
+            <span style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981;"></span>
+              Auto-Save to Source Files Active
+            </span>
             <button class="admin-btn admin-btn--secondary" id="logoutBtn">Logout</button>
           </div>
         </header>
@@ -178,6 +212,7 @@ function renderTabContent(tab) {
           <button class="admin-btn admin-btn--primary" id="btnQuickAddProject">+ Add Project</button>
           <button class="admin-btn admin-btn--secondary" id="btnQuickAddService">+ Add Service</button>
           <button class="admin-btn admin-btn--secondary" id="btnQuickAddYear">+ Add Journey Year</button>
+          <button class="admin-btn admin-btn--secondary" id="btnExportJson">📥 Export data.json Backup</button>
         </div>
       </div>
     `;
@@ -194,7 +229,7 @@ function renderTabContent(tab) {
         <div class="admin-form-group">
           <label class="admin-label">Profile Photo (Upload file or enter image link)</label>
           <div style="display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1rem;">
-            <div style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--color-cyan); overflow: hidden; background: #111; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--color-cyan); overflow: hidden; background: #111; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); flex-shrink: 0;">
               <img id="avatarPreview" src="${avatarImg}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='/rezaullogo.png';" />
             </div>
             <div style="flex: 1;">
@@ -460,6 +495,20 @@ function attachDashboardEvents(container) {
     el.addEventListener('click', () => openServiceModal(container));
   }
 
+  const btnExportJson = container.querySelector('#btnExportJson');
+  if (btnExportJson) {
+    btnExportJson.addEventListener('click', () => {
+      const data = getPortfolioData();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `rezaul-portfolio-data-${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
   // Project Actions
   container.querySelectorAll('[data-edit-project]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -510,14 +559,31 @@ function attachDashboardEvents(container) {
   const avatarPreview = container.querySelector('#avatarPreview');
 
   if (avatarFileInput) {
-    avatarFileInput.addEventListener('change', (e) => {
+    avatarFileInput.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = (loadEvt) => {
+        reader.onload = async (loadEvt) => {
           const base64Url = loadEvt.target.result;
-          if (avatarUrlInput) avatarUrlInput.value = base64Url;
           if (avatarPreview) avatarPreview.src = base64Url;
+
+          // Save image file to server (public/uploads/)
+          try {
+            const upRes = await fetch('/api/upload', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ image: base64Url, name: file.name }),
+            });
+            const upData = await upRes.json();
+            if (upRes.ok && upData.url) {
+              if (avatarUrlInput) avatarUrlInput.value = upData.url;
+              showToast('✓ Photo uploaded & saved to public/uploads/' + (upData.name || ''));
+            } else {
+              if (avatarUrlInput) avatarUrlInput.value = base64Url;
+            }
+          } catch (err) {
+            if (avatarUrlInput) avatarUrlInput.value = base64Url;
+          }
         };
         reader.readAsDataURL(file);
       }
@@ -706,18 +772,35 @@ function openProjectModal(container, existingProj = null) {
   const projModalNoImg = modalDiv.querySelector('#projModalNoImg');
 
   if (projModalFileInput) {
-    projModalFileInput.addEventListener('change', (e) => {
+    projModalFileInput.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = (loadEvt) => {
+        reader.onload = async (loadEvt) => {
           const base64 = loadEvt.target.result;
-          if (projModalImgUrl) projModalImgUrl.value = base64;
           if (projModalImgPreview) {
             projModalImgPreview.src = base64;
             projModalImgPreview.style.display = 'block';
           }
           if (projModalNoImg) projModalNoImg.style.display = 'none';
+
+          // Upload image to server
+          try {
+            const upRes = await fetch('/api/upload', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ image: base64, name: file.name }),
+            });
+            const upData = await upRes.json();
+            if (upRes.ok && upData.url) {
+              if (projModalImgUrl) projModalImgUrl.value = upData.url;
+              showToast('✓ Project photo saved to public/uploads/' + (upData.name || ''));
+            } else {
+              if (projModalImgUrl) projModalImgUrl.value = base64;
+            }
+          } catch (err) {
+            if (projModalImgUrl) projModalImgUrl.value = base64;
+          }
         };
         reader.readAsDataURL(file);
       }
@@ -780,10 +863,15 @@ async function syncData(newData, container) {
   render(container);
 
   try {
-    await fetch('/api/content', {
+    const res = await fetch('/api/content', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newData),
     });
-  } catch (err) {}
+    if (res.ok) {
+      showToast('✓ Saved directly to source file (public/data.json)!');
+    }
+  } catch (err) {
+    showToast('Saved locally in browser');
+  }
 }
